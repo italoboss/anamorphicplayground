@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Content</key>
-			<string>Tap a plane that was recognized to add the Anamorphic Image. Use the content area to invoke the reveal function.</string>
+			<string>Tap a plane that was recognized (highlighted in blue) to add the Anamorphic Image.  Use the content area to invoke the reveal function.</string>
 		</dict>
 	</array>
 </dict>

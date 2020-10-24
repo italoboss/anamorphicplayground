@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Content</key>
-			<string>Tap a plane that was recognized to add the Anamorphic Image. And so look at up.</string>
+			<string>Tap a plane that was recognized (highlighted in blue) to add the Anamorphic Image.  For better experience, preferably select a floor. And so look up.</string>
 		</dict>
 	</array>
 </dict>

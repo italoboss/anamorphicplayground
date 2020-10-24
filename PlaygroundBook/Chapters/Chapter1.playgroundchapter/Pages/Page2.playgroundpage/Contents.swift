@@ -18,13 +18,15 @@ public func reveal() {
  
  It's simple to imagine this occurring in a flat mirror, right? But things change on a curved surface, where each ray of light reflects in a slightly different direction, because of the curvature of the surface, enough to distort the image again and show it in its original form.
  
- Thus, for the illusion to work in a cylindrical mirror, the distortion of the image must follow the curvature of the cylinder.
- *image-goes-here*
+ Thus, for the illusion to work in a cylindrical mirror, the distortion of the image must follow the curvature of the cylinder. Like the example below.
+
+ ![Santos Dumont](cyl_dumont.jpg)
+ *Photo taken at the Catavento Museum*
  
  ## Now, let's try it again!
  Select an plane to add the image without revelation and try to figure out what it is.
  
- After that, for this time, we have to code. Use the method `reveal()` and run the code to see the image revealed in *cylinder*.
+ After that, for this time, we have to code. Use the method **```reveal()```** and run the code to see the image revealed in *cylinder*.
  */
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, reveal())

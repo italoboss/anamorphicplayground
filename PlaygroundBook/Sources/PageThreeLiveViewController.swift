@@ -17,6 +17,11 @@ public class PageThreeLiveViewController: UIViewController, PlaygroundLiveViewMe
     public var sceneView: ARSCNView!
     public var planes = [OverlayPlane]()
     public var addedAnamorphic = false
+    var planeHitResult: ARHitTestResult? = nil
+    
+    public var selectedStyle: TextStyle? = nil
+    public var leftNode: SCNNode?
+    public var rightNode: SCNNode?
     
     public var sessionInfoLabel: UILabel?
     
@@ -39,7 +44,6 @@ public class PageThreeLiveViewController: UIViewController, PlaygroundLiveViewMe
         
         // Set the scene to the view
         sceneView.scene = scene
-        sceneView.autoenablesDefaultLighting = true
         
         registerGestureRecognizers()
         addSessionInfo()
@@ -127,48 +131,48 @@ public class PageThreeLiveViewController: UIViewController, PlaygroundLiveViewMe
                 guard let hitResult = hitTestResult.first else {
                     return
                 }
-                addAnamorphicPlane(at: hitResult)
+                self.planeHitResult = hitResult
+                DispatchQueue.main.async {
+                    self.addAnamorphicPlane(at: hitResult)
+                }
             }
         }
     }
     
     public func addAnamorphicPlane(at hitResult: ARHitTestResult) {
-        var width: CGFloat = 0.94906
-        var height: CGFloat = 1.0
         
-        let wGeometry = SCNBox(width: width, height: height, length: 0.000001, chamferRadius: 0)
-        let wMaterial = SCNMaterial()
-        wMaterial.diffuse.contents = UIImage(named: "wwdc_oblique_one.png")
-        wMaterial.lightingModel = .physicallyBased
-        wGeometry.materials = [wMaterial]
+        let materials = getMaterials()
+        let widths = getWidths()
         
-        let wNode = SCNNode(geometry: wGeometry)
-        wNode.position = SCNVector3(
-            (hitResult.worldTransform.columns.3.x - 0.34),
+        var width: CGFloat = widths[0]
+        let height: CGFloat = 1.0
+        
+        let leftGeometry = SCNBox(width: width, height: height, length: 0.000001, chamferRadius: 0)
+        leftGeometry.materials = [materials[0]]
+        
+        leftNode = SCNNode(geometry: leftGeometry)
+        leftNode?.position = SCNVector3(
+            (hitResult.worldTransform.columns.3.x + 0.00075 - Float(width/4)),
             (hitResult.worldTransform.columns.3.y + 1.4),
             hitResult.worldTransform.columns.3.z
         )
-        wNode.rotation = SCNVector4(0, 1, 0, Float.pi/4)
+        leftNode?.rotation = SCNVector4(0, 1, 0, Float.pi/3)
         
-        width = 0.97721
-        height = 1.0
+        width = widths[1]
         
-        let swGeometry = SCNBox(width: width, height: height, length: 0.000001, chamferRadius: 0)
-        let swMaterial = SCNMaterial()
-        swMaterial.diffuse.contents = UIImage(named: "wwdc_oblique_two.png")
-        swMaterial.lightingModel = .physicallyBased
-        swGeometry.materials = [swMaterial]
+        let rightGeometry = SCNBox(width: width, height: height, length: 0.000001, chamferRadius: 0)
+        rightGeometry.materials = [materials[1]]
         
-        let swNode = SCNNode(geometry: swGeometry)
-        swNode.position = SCNVector3(
-            (hitResult.worldTransform.columns.3.x + 0.34),
+        rightNode = SCNNode(geometry: rightGeometry)
+        rightNode?.position = SCNVector3(
+            (hitResult.worldTransform.columns.3.x - 0.00075 + Float(width/4)),
             (hitResult.worldTransform.columns.3.y + 1.4),
             hitResult.worldTransform.columns.3.z
         )
-        swNode.rotation = SCNVector4(0, 1, 0, -(Float.pi/4))
+        rightNode?.rotation = SCNVector4(0, 1, 0, -(Float.pi/3))
         
-        self.sceneView.scene.rootNode.addChildNode(wNode)
-        self.sceneView.scene.rootNode.addChildNode(swNode)
+        self.sceneView.scene.rootNode.addChildNode(leftNode!)
+        self.sceneView.scene.rootNode.addChildNode(rightNode!)
         
         addedAnamorphic = true
         for plane in planes {
@@ -177,9 +181,20 @@ public class PageThreeLiveViewController: UIViewController, PlaygroundLiveViewMe
     }
     
     public func receive(_ message: PlaygroundValue) {
-        // Implement this method to receive messages sent from the process running Contents.swift.
-        // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
-        // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
+        guard case let PlaygroundValue.integer(style) = message else {
+            self.selectedStyle = nil
+            return
+        }
+        self.selectedStyle = TextStyle(rawValue: style)
+        DispatchQueue.main.async {
+            self.leftNode?.removeFromParentNode()
+            self.rightNode?.removeFromParentNode()
+            self.leftNode = nil
+            self.rightNode = nil
+            if let hitResult = self.planeHitResult {
+                self.addAnamorphicPlane(at: hitResult)
+            }
+        }
     }
     
     
@@ -236,6 +251,54 @@ public class PageThreeLiveViewController: UIViewController, PlaygroundLiveViewMe
         
         sessionInfoLabel?.text = message
         sessionInfoLabel?.isHidden = message.isEmpty
+    }
+    
+    public func getMaterials() -> [SCNMaterial] {
+        let lMaterial = SCNMaterial()
+//        lMaterial.lightingModel = .physicallyBased
+        let rMaterial = SCNMaterial()
+//        rMaterial.lightingModel = .physicallyBased
+        lMaterial.diffuse.contents = UIImage(named: "wwdc_left.png")
+        rMaterial.diffuse.contents = UIImage(named: "wwdc_right.png")
+        
+        guard let style = self.selectedStyle else {
+            return [lMaterial, rMaterial]
+        }
+        switch style {
+        case .pixel:
+            lMaterial.diffuse.contents = UIImage(named: "wwdc_left.png")
+            rMaterial.diffuse.contents = UIImage(named: "wwdc_right.png")
+        case .retro:
+            lMaterial.diffuse.contents = UIImage(named: "write_left.png")
+            rMaterial.diffuse.contents = UIImage(named: "write_right.png")
+        case .comic:
+            lMaterial.diffuse.contents = UIImage(named: "blow_left.png")
+            rMaterial.diffuse.contents = UIImage(named: "blow_right.png")
+        }
+        
+        return [lMaterial, rMaterial]
+    }
+    
+    public func getWidths() -> [CGFloat] {
+        var wLeft: CGFloat = 0.52956
+        var wRight: CGFloat = 0.53057
+        
+        guard let style = self.selectedStyle else {
+            return [wLeft, wRight]
+        }
+        switch style {
+        case .pixel:
+            wLeft = 0.52956
+            wRight = 0.53057
+        case .retro:
+            wLeft = 0.53057
+            wRight = 0.53208
+        case .comic:
+            wLeft = 0.53208
+            wRight = 0.53208
+        }
+        
+        return [wLeft, wRight]
     }
 
 }

@@ -8,7 +8,7 @@
 import UIKit
 import PlaygroundSupport
 
-@objc(Book_Sources_LiveViewController)
+@objc(Book_Sources_NoARLiveViewController)
 public class NoARLiveViewController: UIViewController, PlaygroundLiveViewMessageHandler, PlaygroundLiveViewSafeAreaContainer {
     
     public override func viewDidLoad() {

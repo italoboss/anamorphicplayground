@@ -14,6 +14,13 @@
 		0CA8D43D2243BDE4009D2014 /* grids_two.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0CA8D43B2243BDE4009D2014 /* grids_two.jpg */; };
 		0CA8D43E2243BDE4009D2014 /* grids_one.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0CA8D43C2243BDE4009D2014 /* grids_one.jpg */; };
 		0CA941812244421F0038A083 /* PageThreeLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA941802244421F0038A083 /* PageThreeLiveViewController.swift */; };
+		2C7BC98D224715A900708158 /* publimetas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C7BC98C224715A900708158 /* publimetas.jpg */; };
+		2C7BC98F22471D8200708158 /* cyl_dumont.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C7BC98E22471D8200708158 /* cyl_dumont.jpg */; };
+		2C7BC99122471FDD00708158 /* holbein_painting.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C7BC99022471FDD00708158 /* holbein_painting.jpg */; };
+		2C7BC9932247319300708158 /* AnamorphicIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C7BC9922247319300708158 /* AnamorphicIcon.jpg */; };
+		2C7BC9952247334400708158 /* broken_example.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C7BC9942247334400708158 /* broken_example.jpg */; };
+		2C8EFD622245DD6600CFD478 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8EFD612245DD6600CFD478 /* TextStyle.swift */; };
+		2C8EFD6422464F6900CFD478 /* AboutMeLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8EFD6322464F6900CFD478 /* AboutMeLiveViewController.swift */; };
 		5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
@@ -104,6 +111,13 @@
 		0CA8D43B2243BDE4009D2014 /* grids_two.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grids_two.jpg; sourceTree = "<group>"; };
 		0CA8D43C2243BDE4009D2014 /* grids_one.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grids_one.jpg; sourceTree = "<group>"; };
 		0CA941802244421F0038A083 /* PageThreeLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeLiveViewController.swift; sourceTree = "<group>"; };
+		2C7BC98C224715A900708158 /* publimetas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = publimetas.jpg; path = ../../../publimetas.jpg; sourceTree = "<group>"; };
+		2C7BC98E22471D8200708158 /* cyl_dumont.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cyl_dumont.jpg; path = ../../../cyl_dumont.jpg; sourceTree = "<group>"; };
+		2C7BC99022471FDD00708158 /* holbein_painting.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = holbein_painting.jpg; path = "../../../images page 03/holbein_painting.jpg"; sourceTree = "<group>"; };
+		2C7BC9922247319300708158 /* AnamorphicIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = AnamorphicIcon.jpg; path = ../../../AnamorphicIcon.jpg; sourceTree = "<group>"; };
+		2C7BC9942247334400708158 /* broken_example.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = broken_example.jpg; path = ../../../broken_example.jpg; sourceTree = "<group>"; };
+		2C8EFD612245DD6600CFD478 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		2C8EFD6322464F6900CFD478 /* AboutMeLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeLiveViewController.swift; sourceTree = "<group>"; };
 		5E086DC02051C5A7004D8D25 /* Anamorphic AR.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Anamorphic AR.playgroundbook"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
 		5E086DCD2051DDB8004D8D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveView.storyboard; sourceTree = "<group>"; };
@@ -255,8 +269,13 @@
 		5EF2F9792054B64800191409 /* PrivateResources */ = {
 			isa = PBXGroup;
 			children = (
+				2C7BC9922247319300708158 /* AnamorphicIcon.jpg */,
+				2C7BC98C224715A900708158 /* publimetas.jpg */,
+				2C7BC9942247334400708158 /* broken_example.jpg */,
 				0CA8D43C2243BDE4009D2014 /* grids_one.jpg */,
 				0CA8D43B2243BDE4009D2014 /* grids_two.jpg */,
+				2C7BC98E22471D8200708158 /* cyl_dumont.jpg */,
+				2C7BC99022471FDD00708158 /* holbein_painting.jpg */,
 				5EF2F97E2054B6E400191409 /* ManifestPlist.strings */,
 				5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */,
 			);
@@ -273,6 +292,8 @@
 				0C300D28223E8EC500D90527 /* OverlayPlane.swift */,
 				0C300D2A223E9E6C00D90527 /* Assets.xcassets */,
 				0CA8D43822416E95009D2014 /* NoARViewController.swift */,
+				2C8EFD612245DD6600CFD478 /* TextStyle.swift */,
+				2C8EFD6322464F6900CFD478 /* AboutMeLiveViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -390,10 +411,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7BC9932247319300708158 /* AnamorphicIcon.jpg in Resources */,
+				2C7BC9952247334400708158 /* broken_example.jpg in Resources */,
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
 				0CA8D43A22428B06009D2014 /* Assets.xcassets in Resources */,
 				0CA8D43D2243BDE4009D2014 /* grids_two.jpg in Resources */,
+				2C7BC98F22471D8200708158 /* cyl_dumont.jpg in Resources */,
 				0CA8D43E2243BDE4009D2014 /* grids_one.jpg in Resources */,
+				2C7BC99122471FDD00708158 /* holbein_painting.jpg in Resources */,
+				2C7BC98D224715A900708158 /* publimetas.jpg in Resources */,
 				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,8 +469,10 @@
 				0CA8D43922416E95009D2014 /* NoARViewController.swift in Sources */,
 				0CA8D43722416DDF009D2014 /* PageTwoLiveViewController.swift in Sources */,
 				0CA941812244421F0038A083 /* PageThreeLiveViewController.swift in Sources */,
+				2C8EFD622245DD6600CFD478 /* TextStyle.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
 				0C300D29223E8EC500D90527 /* OverlayPlane.swift in Sources */,
+				2C8EFD6422464F6900CFD478 /* AboutMeLiveViewController.swift in Sources */,
 				5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

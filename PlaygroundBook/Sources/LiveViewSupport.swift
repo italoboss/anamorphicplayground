@@ -38,3 +38,7 @@ public func instantiatePageThreeLiveView() -> PlaygroundLiveViewable {
 public func instantiateNoARLiveView() -> PlaygroundLiveViewable {
     return NoARLiveViewController()
 }
+
+public func instantiateAboutMeLiveView() -> PlaygroundLiveViewable {
+    return AboutMeLiveViewController()
+}
